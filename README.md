@@ -1,10 +1,10 @@
 # Web Bán Đồ Điện Tử - Chuyên Đề 1
 
 # Giới thiệu đề tài
-Đề tài "Web Bán Đồ Điện Tử" xây dựng một hệ thống thương mại điện tử chuyên bán các sản phẩm điện tử như điện thoại, laptop, tai nghe, phụ kiện, v.v. Hệ thống sử dụng kiến trúc microservices, triển khai trên nền tảng cloud AWS (EC2 và RDS) với Docker và Docker Compose để đảm bảo tính mô-đun và khả năng mở rộng. Các dịch vụ chính bao gồm API Gateway (Nginx), Auth Service, Product Service, Order Service, Payment Service, Cart Service, cùng với cơ sở dữ liệu MySQL, Redis và RabbitMQ hỗ trợ giao tiếp bất đồng bộ. Tài liệu báo cáo gồm 81 trang, trình bày chi tiết từ phân tích, thiết kế, triển khai đến kết quả và hướng phát triển.
-Thông tin chung
+Đề tài "Web Bán Đồ Điện Tử" xây dựng một hệ thống thương mại điện tử chuyên bán các sản phẩm điện tử như điện thoại, laptop, tai nghe, phụ kiện, v.v. Hệ thống sử dụng kiến trúc microservices, triển khai trên nền tảng cloud AWS (EC2 và RDS) với Docker và Docker Compose để đảm bảo tính mô-đun và khả năng mở rộng. Các dịch vụ chính bao gồm API Gateway (Nginx), Auth Service, Product Service, Order Service, Payment Service, Cart Service, cùng với cơ sở dữ liệu MySQL, Redis và RabbitMQ.
 
-# Trường: Đại học Bình Dương, Khoa Công nghệ Thông tin, Robot và Trí tuệ Nhân tạo  
+# Đại học Bình Dương, Khoa Công nghệ Thông tin, Robot và Trí tuệ Nhân tạo  
+![Logo Đại học Bình Dương](https://www.bdu.edu.vn/uploads/news/2019_12/logo_hao_quang_chon_07_2007-1.jpg) 
 
 # Đề tài: Xây dựng website bán đồ điện tử (điện thoại, laptop, tai nghe, phụ kiện, v.v.)  
 
