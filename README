@@ -1,156 +1,55 @@
-# Microservices Mini Project
+Web Bán Đồ Điện Tử - Chuyên Đề 1
+Giới thiệu đề tài
+Đề tài "Web Bán Đồ Điện Tử" xây dựng một hệ thống thương mại điện tử chuyên bán các sản phẩm điện tử như điện thoại, laptop, tai nghe, phụ kiện, v.v. Hệ thống sử dụng kiến trúc microservices, triển khai trên nền tảng cloud AWS (EC2 và RDS) với Docker và Docker Compose để đảm bảo tính mô-đun và khả năng mở rộng. Các dịch vụ chính bao gồm API Gateway (Nginx), Auth Service, Product Service, Order Service, Payment Service, Cart Service, cùng với cơ sở dữ liệu MySQL, Redis và RabbitMQ hỗ trợ giao tiếp bất đồng bộ. Tài liệu báo cáo gồm 81 trang, trình bày chi tiết từ phân tích, thiết kế, triển khai đến kết quả và hướng phát triển.
+Thông tin chung
 
-Đây là một dự án microservices mini được xây dựng bằng Django, MySQL và RabbitMQ.
+Trường: Đại học Bình Dương, Khoa Công nghệ Thông tin, Robot và Trí tuệ Nhân tạo  
 
-## Cấu trúc dự án
+Đề tài: Xây dựng website bán đồ điện tử (điện thoại, laptop, tai nghe, phụ kiện, v.v.)  
 
-Dự án bao gồm 3 microservices chính:
+Giảng viên hướng dẫn: ThS. Nguyễn Thanh Sơn  
 
-1. **Auth Service**: Quản lý người dùng, xác thực và phân quyền
-2. **Product Service**: Quản lý sản phẩm và danh mục sản phẩm
-3. **Order Service**: Quản lý đơn hàng và xử lý giao dịch
+Nhóm sinh viên thực hiện: 
 
-Ngoài ra, dự án còn có một module `seed_data` để khởi tạo dữ liệu ban đầu.
+Nguyễn Quốc Duy Khang
+Nghiêm Trung Hiếu
+Lê Đức Tài  
 
-## Cài đặt và Chạy
 
-### Yêu cầu
+Mục tiêu
+Xây dựng website thương mại điện tử bán đồ điện tử với đầy đủ chức năng: duyệt sản phẩm, giỏ hàng, đặt hàng, thanh toán.  
+Có phần quản trị để quản lý sản phẩm, đơn hàng, tài khoản người dùng.
 
-- Docker và Docker Compose
+Nội dung chính
 
-### Chạy dự án
+Phân tích hệ thống: Mô hình tổng quát, phân tích Usecase (Đăng ký, Đăng nhập, Quản lý giỏ hàng, Đặt hàng, Quản lý sản phẩm, v.v.).  
+Thiết kế hệ thống: Sequence Diagram, Database Diagram, thiết kế giao diện (Đăng nhập, Đăng ký, Quản lý Admin/Nhân viên/Người dùng).  
+Triển khai trên Cloud: Sử dụng AWS (EC2, RDS), Docker, Docker Compose để triển khai website.  
+Kết quả đạt được: Website hoạt động với các chức năng cơ bản, giao diện thân thiện, triển khai thành công trên cloud.  
+Hạn chế: Chưa hỗ trợ thanh toán trực tuyến, tìm kiếm nâng cao, bảo mật cơ bản.  
+Hướng phát triển: Thêm thanh toán trực tuyến (Momo, VNPAY), tìm kiếm nâng cao, đánh giá sản phẩm, cải thiện bảo mật.
 
-1. Clone repository
-2. Chạy lệnh sau để khởi động toàn bộ hệ thống:
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-```bash
-docker-compose up -d
-```
+Microservices Project
 
-Quá trình này sẽ:
-- Tạo và khởi động các container cho các service
-- Tạo cơ sở dữ liệu MySQL
-- Chạy migrations để tạo các bảng cần thiết
-- Seed dữ liệu mẫu qua module `seed_data`
+Đây là một dự án microservices được xây dựng bằng Django, MySQL, Redis, RabbitMQ và tích hợp Stripe cho thanh toán.
+Cấu trúc dự án
 
-### Kiểm tra trạng thái
+Dự án bao gồm các thành phần chính:
 
-```bash
-docker-compose ps
-```
+- API Gateway: Nginx, định tuyến các yêu cầu đến các service tương ứng.
+- Auth Service: Xử lý xác thực người dùng, đăng ký, đăng nhập và quản lý ví điện tử.
+- Product Service: Quản lý sản phẩm, danh mục sản phẩm và các thông tin liên quan.
+- Order Service: Quản lý đơn hàng, trạng thái đơn hàng và lịch sử giao dịch.
+- Payment Service: Tích hợp Stripe cho thanh toán trực tuyến.
+- Cart Service: Quản lý giỏ hàng của người dùng.
+- RabbitMQ: Sử dụng cho giao tiếp bất đồng bộ giữa các service cụ thể như Order Service, Payment Service và Product Service.
+- MySQL: Cơ sở dữ liệu chính cho các service.
+- Redis: Sử dụng cho cache và lưu trữ tạm thời.
+- Django: Framework chính để xây dựng các service.
+- ReactJS: Sử dụng cho giao diện người dùng (frontend).
 
-## API Endpoints
+Frontend: Giao diện người dùng tại http://localhost:8080.
+Ngoài ra, dự án có module seed_data để khởi tạo dữ liệu ban đầu.
 
-### Auth Service (http://localhost:8001)
-
-- `POST /api/auth/users/`: Đăng ký người dùng mới
-- `POST /api/auth/users/login/`: Đăng nhập và lấy token
-- `GET /api/auth/users/me/`: Lấy thông tin người dùng hiện tại
-
-### Product Service (http://localhost:8002)
-
-- `GET /api/products/categories/`: Lấy danh sách danh mục
-- `POST /api/products/categories/`: Tạo danh mục mới
-- `GET /api/products/`: Lấy danh sách sản phẩm
-- `POST /api/products/`: Tạo sản phẩm mới
-- `GET /api/products/{id}/`: Lấy thông tin sản phẩm
-- `PUT/PATCH /api/products/{id}/`: Cập nhật sản phẩm
-- `DELETE /api/products/{id}/`: Xóa sản phẩm
-- `POST /api/products/{id}/update_stock/`: Cập nhật số lượng tồn kho
-
-### Order Service (http://localhost:8003)
-
-- `GET /api/orders/`: Lấy danh sách đơn hàng
-- `POST /api/orders/`: Tạo đơn hàng mới
-- `GET /api/orders/{id}/`: Lấy thông tin đơn hàng
-- `POST /api/orders/{id}/cancel/`: Hủy đơn hàng
-- `POST /api/orders/{id}/update_status/`: Cập nhật trạng thái đơn hàng
-
-## Testing với Postman
-
-Dự án có kèm theo một Postman Collection để test các API. Bạn có thể import file `postman/microservice-test.json` vào Postman để sử dụng.
-
-Cách sử dụng:
-1. Import collection vào Postman
-2. Trước tiên, thực hiện request "Register User" để tạo tài khoản
-3. Sau đó thực hiện request "Login User" để lấy token
-4. Sao chép giá trị token từ kết quả đăng nhập vào biến môi trường `auth_token` trong collection
-5. Tiến hành test các API khác với token đã được cấu hình
-
-## Kiến trúc Microservices
-
-### Giao tiếp giữa các Service
-
-Các microservice giao tiếp với nhau theo hai cách:
-
-1. **REST API**: Các service gọi trực tiếp API của nhau cho các tác vụ đồng bộ (ví dụ: Order Service gọi Product Service để kiểm tra tồn kho).
-
-2. **RabbitMQ**: Các service sử dụng RabbitMQ để gửi và nhận các event không đồng bộ (ví dụ: khi một đơn hàng bị hủy, Order Service phát một event, và Product Service lắng nghe event đó để hoàn lại số lượng tồn kho).
-
-### Event-based Communication
-
-Các event chính trong hệ thống:
-
-- **User Events**: `user.created`, `user.updated`
-- **Product Events**: `product.created`, `product.updated`, `product.deleted`, `product.stock_changed`
-- **Order Events**: `order.created`, `order.updated`, `order.cancelled`
-
-### Xử lý lỗi và Recovery
-
-- Các service được thiết kế để chạy độc lập, ngay cả khi các service khác không khả dụng.
-- Sử dụng retry logic khi gọi API của service khác.
-- RabbitMQ đảm bảo các message không bị mất khi xảy ra lỗi.
-
-## Mở rộng dự án
-
-### Thêm Service mới
-
-Để thêm một service mới vào hệ thống:
-
-1. Tạo thư mục mới cho service với cấu trúc tương tự các service hiện có
-2. Cấu hình kết nối đến MySQL và RabbitMQ
-3. Thêm service vào file `docker-compose.yml`
-4. Cấu hình RabbitMQ consumer/producer mới
-
-### Thêm tính năng
-
-Một số hướng phát triển:
-
-- Thêm Payment Service để xử lý thanh toán
-- Thêm Notification Service để gửi email/SMS
-- Thêm API Gateway để tập trung quản lý các request
-- Thêm Service Discovery và Load Balancing
-
-## Gỡ lỗi
-
-### Kiểm tra logs
-
-```bash
-docker-compose logs auth_service
-docker-compose logs product_service
-docker-compose logs order_service
-docker-compose logs rabbitmq
-```
-
-### Kiểm tra RabbitMQ
-
-Truy cập RabbitMQ Management UI: http://localhost:15672 
-(Username: guest, Password: guest)
-
-### Kết nối trực tiếp đến database
-
-```bash
-docker-compose exec mysql mysql -u user -ppassword
-```
-
-## Dừng dự án
-
-```bash
-docker-compose down
-```
-
-Nếu muốn xóa cả dữ liệu (volume):
-
-```bash
-docker-compose down -v
-```
